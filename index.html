@@ -1,0 +1,391 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="流浪犬迎家、醫療、採購與正向訓練互動計畫。">
+  <title>安心迎家計畫｜Rescue Dog Home Plan</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#top" aria-label="回到首頁"><span>RD</span><strong>安心迎家計畫</strong></a>
+    <button class="icon-button menu-button" id="menuButton" type="button" aria-expanded="false" aria-controls="mainNav">☰</button>
+    <nav id="mainNav">
+      <a href="#dashboard">儀表板</a>
+      <a href="#prepare">接回前</a>
+      <a href="#timeline">90 天</a>
+      <a href="#puppy">幼犬</a>
+      <a href="#weekly">週計畫</a>
+      <a href="#training">訓練</a>
+      <a href="#health">健康</a>
+      <a href="#shopping">採購</a>
+      <a href="#emergency">緊急卡</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-media" aria-hidden="true">
+        <img src="assets/dog-homecoming.webp" alt="">
+      </div>
+      <div class="hero-content">
+        <p class="eyebrow">2026.07.12 HOME ARRIVAL</p>
+        <h1>讓牠回家，是一套關於安全、節奏與信任的計畫。</h1>
+        <p>把接回前準備、獸醫檢查、採購預算、每日觀察和正向訓練收進同一個互動工作台。所有輸入只儲存在這台裝置。</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#dashboard">開始整理</a>
+          <button class="button subtle" type="button" id="printButton">列印計畫</button>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="今日狀態">
+        <span>目前階段</span>
+        <strong id="countdownValue">計算中</strong>
+        <p id="phaseHint">正在讀取迎家日期</p>
+      </aside>
+    </section>
+
+    <section class="notice">
+      <strong>重要提醒</strong>
+      <p>本頁提供教育與規劃資訊，不取代獸醫診斷、治療或當地法規。若出現呼吸困難、昏倒、抽搐、中毒、重大外傷、無法排尿或中暑，請立刻聯絡當地獸醫或動物急診。</p>
+    </section>
+
+    <section class="section dashboard" id="dashboard">
+      <div class="wrap dashboard-grid">
+        <article class="command-card">
+          <div class="ring" id="progressRing" aria-label="整體完成度 0%"><span id="progressNumber">0%</span></div>
+          <div>
+            <p class="eyebrow dark">READY STATUS</p>
+            <h2>把未知變成可管理的資訊</h2>
+            <p id="todayText">完成獸醫預約、居家防逃、雙點固定、原食物與家庭共同規則。</p>
+          </div>
+          <div class="stat-row">
+            <span><strong id="checkedCount">0</strong> 已完成</span>
+            <span><strong id="remainingCount">0</strong> 待處理</span>
+            <span><strong><span id="budgetTotal">0</span></strong> 預算</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>狗狗基本檔案</h3>
+          <div class="form-grid">
+            <label>暫定名字<input data-save="dogName" type="text" placeholder="例如：小福"></label>
+            <label>預估性別<select data-save="sex"><option value="">未知</option><option>公</option><option>母</option></select></label>
+            <label>預估年齡<input data-save="age" type="text" placeholder="例如：1-3 歲"></label>
+            <label>目前體重<input data-save="weight" type="text" placeholder="例如：12.4 kg"></label>
+            <label>晶片號碼<input data-save="microchip" type="text" placeholder="掃描後填寫"></label>
+            <label>主要獸醫院<input data-save="vetClinic" type="text" placeholder="診所名稱"></label>
+          </div>
+        </article>
+
+        <article class="card compact-card">
+          <p class="eyebrow dark">現在最該做</p>
+          <h3 id="todayTitle">接回前準備期</h3>
+          <p>先完成安全區、急診資訊、雙點固定與接回動線。其他親密互動可以慢慢來。</p>
+          <button class="button secondary full" id="exportButton" type="button">匯出進度備份</button>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="prepare">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow dark">TWO-WEEK SETUP</p>
+          <h2>接回前兩週準備表</h2>
+          <p>先把環境、醫療和家庭規則定下來。目標不是把家變完美，而是讓狗不用靠勇敢才能安全。</p>
+        </div>
+        <div class="check-grid">
+          <article class="card checklist">
+            <h3>健康基線</h3>
+            <label><input class="task-check" type="checkbox" data-task="background-food"><span>記錄目前食物品牌、份量、餐次與最後一次進食時間。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="background-stool"><span>詢問排便、嘔吐、咳嗽、搔癢、跛行、尿色與飲水狀況。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="background-history"><span>收集疫苗、驅蟲、除蚤、結紮、受傷、用藥與曾就醫資料。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="vet-booked"><span>預約接回後 24-72 小時內首次獸醫檢查。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="emergency-clinic"><span>查好最近 24 小時動物急診、路線、電話與付款方式。</span></label>
+          </article>
+          <article class="card checklist">
+            <h3>安全區</h3>
+            <label><input class="task-check" type="checkbox" data-task="safe-zone"><span>選一個遠離大門、電視與人流的安全區，放床墊、水和安靜啃咬物。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="double-door"><span>在玄關建立第二道防線：嬰兒門、圍欄或可關閉內門。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="hazard-proof"><span>收起藥物、清潔劑、垃圾、電線、骨頭、巧克力、葡萄乾、洋蔥蒜與木糖醇產品。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="balcony"><span>檢查窗戶、陽台、紗窗、院門、柵欄下方與可跳上的家具。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="pet-separation"><span>若有其他動物，準備完全分區、獨立食水碗與輪流活動動線。</span></label>
+          </article>
+          <article class="card checklist">
+            <h3>家庭規則</h3>
+            <label><input class="task-check" type="checkbox" data-task="cue-list"><span>全家統一短口令：名字、來、等、放、墊子。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="marker"><span>決定標記詞，例如「好」，並在 1 秒內給獎勵。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="visitor-rule"><span>前兩週不安排探訪；必要訪客忽略狗、不伸手、不盯視。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="child-rule"><span>若家中有小孩，大人全程主動監督，不讓孩子抱、追或打擾睡覺。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="schedule"><span>排出誰負責散步、餵食、清潔、訓練、看診與獨處練習。</span></label>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section dark-section" id="homecoming">
+      <div class="wrap">
+        <p class="eyebrow">HOMECOMING DAY</p>
+        <h2>迎家日：每一步都替牠保留選擇權</h2>
+        <div class="step-strip">
+          <article><span>1</span><h3>出發前</h3><p>檢查胸背、項圈、聯絡牌、牽繩扣具，並關閉家中外門與陽台。</p></article>
+          <article><span>2</span><h3>上車</h3><p>用零食或緩慢引導，不追趕、不硬拖；明顯恐慌就停下。</p></article>
+          <article><span>3</span><h3>抵家前</h3><p>到安靜處短暫排尿。全程不放繩，不安排與其他狗打招呼。</p></article>
+          <article><span>4</span><h3>進家</h3><p>直接到安全區，讓牠自行探索。家人側身、安靜、不圍觀。</p></article>
+          <article><span>5</span><h3>第一晚</h3><p>不要求獨睡，不因哀鳴責罵；保留微光或白噪音皆可。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="timeline">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow dark">90-DAY ADJUSTMENT</p>
+          <h2>前 90 天適應與生活能力計畫</h2>
+          <p>「3 天、3 週、3 個月」只是觀察節點。若牠仍緊張，就回到更簡單、更安靜的階段。</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="90 天分期">
+          <button class="phase-tab active" role="tab" aria-selected="true" data-phase="phase1">前 72 小時</button>
+          <button class="phase-tab" role="tab" aria-selected="false" data-phase="phase2">第 1-2 週</button>
+          <button class="phase-tab" role="tab" aria-selected="false" data-phase="phase3">第 3-4 週</button>
+          <button class="phase-tab" role="tab" aria-selected="false" data-phase="phase4">第 2-3 個月</button>
+        </div>
+        <div class="phase-panel active" id="phase1">
+          <article><h3>前 72 小時主軸</h3><p>安全、休息、排泄、飲水與健康觀察。先不要測試牠會不會乖，也不要急著建立親密。</p></article>
+          <article><h3>只做低壓維持</h3><ul><li>睡醒、進食、玩耍後帶去同一排泄點。</li><li>記錄食量、飲水、尿、便、咳嗽、皮膚與精神。</li><li>名字一次，看你，標記，再給一小口食物。</li></ul></article>
+          <article><h3>先暫停的事</h3><ul><li>洗澡、剪甲、長時間散步。</li><li>陌生人探訪、與犬貓直接接觸。</li><li>要求坐下才能吃飯等高壓規則。</li></ul></article>
+        </div>
+        <div class="phase-panel" id="phase2" hidden>
+          <article><h3>第 1-2 週主軸</h3><p>建立可預測作息、提高如廁成功率，讓狗知道每天會發生什麼，而不是擴大社交圈。</p></article>
+          <article><h3>新增基礎技能</h3><ul><li>3-5 次、每次 2-3 分鐘短訓練。</li><li>短距離嗅聞散步，避開狗群與尖峰。</li><li>從離開視線 3-5 秒開始獨處。</li></ul></article>
+          <article><h3>本週觀察重點</h3><ul><li>食物、玩具、床位是否出現僵硬或低吼。</li><li>門外聲音、電梯、車輛、男人、孩子等觸發物。</li><li>受驚後能否在幾分鐘內恢復吃東西或嗅聞。</li></ul></article>
+        </div>
+        <div class="phase-panel" id="phase3" hidden>
+          <article><h3>第 3-4 週主軸</h3><p>在低強度的新環境中保持安全感，開始合作照護、安靜等待和受控訪客練習。</p></article>
+          <article><h3>小幅擴大半徑</h3><ul><li>更換一條安靜散步路線。</li><li>看耳朵、摸腳、刷一下毛就獎勵。</li><li>訪客隔著門欄丟食物，不主動摸狗。</li></ul></article>
+          <article><h3>擴展規則</h3><p>一次只增加距離、時間、干擾其中一項。遇到拒食、僵硬、逃避或回家後睡不安穩，就退回上一階段。</p></article>
+        </div>
+        <div class="phase-panel" id="phase4" hidden>
+          <article><h3>第 2-3 個月主軸</h3><p>把已學會的技能帶到更多日常情境，形成能長期維持的家庭生活。</p></article>
+          <article><h3>泛化與耐力</h3><ul><li>長牽繩召回與等待，僅在安全封閉或合法場所。</li><li>依獸醫評估增加運動量與肌力活動。</li><li>延長獨處，但仍低於恐慌閾值。</li></ul></article>
+          <article><h3>長期保養</h3><ul><li>每月體重與體態照片。</li><li>每季檢查晶片和聯絡資料。</li><li>每年預防保健、口腔與寄生蟲計畫。</li><li>保留行為觸發物與恢復時間紀錄。</li></ul></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="puppy">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow dark">6-12 MONTHS</p>
+          <h2>6 個月到 1 歲幼犬常見行為與處理建議</h2>
+          <p>這個年紀常像「身體變大、腦袋還在施工」。很多行為不是故意搗亂，而是青春期、換牙後口腔需求、衝動控制不足和環境壓力一起出現。先管理情境，再教替代行為。</p>
+        </div>
+        <div class="puppy-grid">
+          <article>
+            <span>01</span>
+            <h3>咬手、咬褲腳、玩到失控</h3>
+            <p><strong>常見原因：</strong>精力過高、太累、用嘴探索、互動規則不清楚。</p>
+            <p><strong>處理：</strong>準備可咬玩具；牙齒碰皮膚就安靜停止互動 5-10 秒，重新給玩具；每天安排嗅聞、舔食和短訓練消耗腦力。</p>
+            <label><input class="task-check" type="checkbox" data-task="puppy-mouth-plan">已建立咬手中止規則與替代玩具</label>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>跳人、撲客人、興奮失控</h3>
+            <p><strong>常見原因：</strong>跳起來曾得到注意、客人刺激太高、還不會用坐下或回墊子打招呼。</p>
+            <p><strong>處理：</strong>客人進門前先上牽繩或隔門欄；四腳落地才給注意；練「去墊子」和「丟食物到地上嗅找」降低興奮。</p>
+            <label><input class="task-check" type="checkbox" data-task="puppy-greeting-plan">已設定訪客進門流程</label>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>亂咬家具、偷襪子、翻垃圾</h3>
+            <p><strong>常見原因：</strong>探索需求、無聊、物品太容易取得，或曾因被追逐而變好玩。</p>
+            <p><strong>處理：</strong>先收好高風險物；用圍欄限制自由範圍；每天提供咬嚼、嗅聞墊、藏食遊戲。不要追，改用交換訓練。</p>
+            <label><input class="task-check" type="checkbox" data-task="puppy-chew-proof">已完成幼犬高度的居家防咬檢查</label>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>散步暴衝、拉繩、看到狗就爆衝</h3>
+            <p><strong>常見原因：</strong>外界刺激太強、練習距離太近、散步只剩「往前衝」能得到回報。</p>
+            <p><strong>處理：</strong>避開尖峰；看見狗之前先加距離；繩子鬆才前進，拉緊就停下或轉向；用嗅聞當獎勵，不用硬扯回腳邊。</p>
+            <label><input class="task-check" type="checkbox" data-task="puppy-leash-distance">已找出可吃零食的安全距離</label>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>突然怕人、怕聲音、怕新物品</h3>
+            <p><strong>常見原因：</strong>青春期敏感期、睡眠不足、疼痛或一次接觸太強。</p>
+            <p><strong>處理：</strong>不要硬逼靠近；增加距離，讓牠能吃、能嗅聞、能離開；每次只看 1-3 秒就獎勵。反應升高或突然劇變時先諮詢獸醫。</p>
+            <label><input class="task-check" type="checkbox" data-task="puppy-fear-plan">已列出 3 個容易害怕的觸發物與安全距離</label>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>如廁退步、興奮尿、外面不敢尿</h3>
+            <p><strong>常見原因：</strong>換環境、作息未穩、太晚帶出門，或戶外壓力太高。</p>
+            <p><strong>處理：</strong>睡醒、吃飯、玩耍後立刻去固定地點；成功後安靜獎勵；室內失誤只清理，不責罵。頻尿、血尿或疼痛要看獸醫。</p>
+            <label><input class="task-check" type="checkbox" data-task="puppy-potty-schedule">已建立如廁時間表與清潔流程</label>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="weekly">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow dark">WEEKLY ROADMAP</p>
+          <h2>12 週差異化計畫</h2>
+          <p>每週只放 1-2 個主題，避免所有訓練同時推進。若任何一週出現拒食、失眠、攻擊升高或健康異常，就停在前一週難度。</p>
+        </div>
+        <div class="week-grid">
+          <article><span>第 1 週</span><h3>減壓與安全感</h3><p>只開放安全區、固定如廁路線、記錄食慾與睡眠。訓練只做名字、吃手中食物、回安全區。</p><label><input class="task-check" type="checkbox" data-task="week-1">完成第一週低刺激作息</label></article>
+          <article><span>第 2 週</span><h3>作息與如廁</h3><p>固定餐次、排泄點與睡前流程。開始 3-5 秒離開視線，不追求長時間獨處。</p><label><input class="task-check" type="checkbox" data-task="week-2">如廁與短暫離開流程穩定</label></article>
+          <article><span>第 3 週</span><h3>名字、碰手、交換</h3><p>把名字變成好事；用鼻碰手引導轉向；從低價值物品練交換，避免追逐與硬搶。</p><label><input class="task-check" type="checkbox" data-task="week-3">完成基礎互動三件事</label></article>
+          <article><span>第 4 週</span><h3>鬆繩與嗅聞散步</h3><p>選安靜路段練 5-10 步鬆繩；拉緊就停或轉向；把嗅聞作為獎勵。</p><label><input class="task-check" type="checkbox" data-task="week-4">找到一條低壓散步路線</label></article>
+          <article><span>第 5 週</span><h3>獨處與休息</h3><p>用攝影觀察離開後是否能吃、躺下、安靜。只在放鬆時延長時間，避免哭累策略。</p><label><input class="task-check" type="checkbox" data-task="week-5">完成不恐慌的短獨處</label></article>
+          <article><span>第 6 週</span><h3>訪客與門口管理</h3><p>訪客不主動摸狗；狗在門欄後吃地上零食或回墊子。先練看見人，不練被摸。</p><label><input class="task-check" type="checkbox" data-task="week-6">完成一次低壓訪客練習</label></article>
+          <article><span>第 7 週</span><h3>幼犬衝動控制</h3><p>練等碗放下、放下、離開、四腳落地才打招呼。每次 1-2 分鐘，高成功率結束。</p><label><input class="task-check" type="checkbox" data-task="week-7">完成三個衝動控制小練習</label></article>
+          <article><span>第 8 週</span><h3>咬嚼與安靜娛樂</h3><p>建立每天固定的嗅聞、舔食、咬嚼時段，替代拆家與咬手。</p><label><input class="task-check" type="checkbox" data-task="week-8">建立每日安靜娛樂菜單</label></article>
+          <article><span>第 9 週</span><h3>低強度新環境</h3><p>只增加一個變項：新路線、新聲音或新人。能吃、能離開、能恢復才算成功。</p><label><input class="task-check" type="checkbox" data-task="week-9">完成一次安全新環境觀察</label></article>
+          <article><span>第 10 週</span><h3>合作照護</h3><p>看耳、摸腳、刷一下、嘴邊觸碰都拆成小步驟。狗離開就停止，不用壓住完成。</p><label><input class="task-check" type="checkbox" data-task="week-10">完成 3 個部位合作照護</label></article>
+          <article><span>第 11 週</span><h3>召回與長牽繩</h3><p>在安全封閉或合法地點，用長牽繩練「來」和放回去玩，讓回來不等於失去自由。</p><label><input class="task-check" type="checkbox" data-task="week-11">完成低干擾召回練習</label></article>
+          <article><span>第 12 週</span><h3>維持與調整</h3><p>回顧日誌：哪些觸發物下降、哪些仍困難。保留有效作息，安排獸醫或訓練師複盤。</p><label><input class="task-check" type="checkbox" data-task="week-12">完成 90 天複盤</label></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="training">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow dark">POSITIVE TRAINING</p>
+          <h2>七項最先學的生活能力與教學步驟</h2>
+          <p>每次 2-3 分鐘，一天數次。先在安靜室內練到成功率高，再慢慢增加距離、時間或干擾。不要在牠做不到時反覆測試。</p>
+        </div>
+        <div class="training-grid">
+          <details open><summary><span>01</span>名字與注意力</summary><div class="lesson"><p><strong>步驟：</strong>說名字一次，牠看你就說「好」並把食物送到嘴邊。若沒反應，不重複叫，改用更近距離或更安靜環境。</p><p><strong>進階：</strong>從室內 1 公尺，到同房不同位置，再到門口、走廊、安靜戶外。</p><p><strong>避免：</strong>不要在責罵、抓牠或結束玩樂前叫名字。</p></div><label><input class="task-check" type="checkbox" data-task="skill-name">室內 5 次中回頭 4 次</label></details>
+          <details><summary><span>02</span>鼻碰手</summary><div class="lesson"><p><strong>步驟：</strong>手掌放在鼻前 3-5 公分，鼻子一碰就標記獎勵。成功 5 次後再把手移到左右或低一點。</p><p><strong>用途：</strong>引導轉身、離開門口、上秤、走進胸背，不需要拉扯身體。</p><p><strong>判斷：</strong>動作快、尾巴和身體柔軟，才增加距離。</p></div><label><input class="task-check" type="checkbox" data-task="skill-touch">連續碰手 5 次且身體放鬆</label></details>
+          <details><summary><span>03</span>召回「來」</summary><div class="lesson"><p><strong>步驟：</strong>室內 1-2 公尺，蹲低、說一次「來」，後退兩步；牠靠近就連續獎勵 3-5 小口。</p><p><strong>進階：</strong>回來後再放牠去探索，讓召回不是永遠結束好玩的事。</p><p><strong>安全：</strong>戶外用長牽繩；沒練穩前不在開放空間放繩。</p></div><label><input class="task-check" type="checkbox" data-task="skill-recall">低干擾召回成功率 80%</label></details>
+          <details><summary><span>04</span>墊子休息</summary><div class="lesson"><p><strong>步驟：</strong>看墊子就獎勵，腳踏上去再獎勵，逐步等坐下或趴下。食物丟在墊子上，不把狗推上去。</p><p><strong>使用：</strong>吃飯、訪客、開門、看診等待前，都先從無干擾短時間練起。</p><p><strong>目標：</strong>不是命令牠不能動，而是給一個可預測的安全基地。</p></div><label><input class="task-check" type="checkbox" data-task="skill-mat">能在墊子上放鬆 30 秒</label></details>
+          <details><summary><span>05</span>放下與交換</summary><div class="lesson"><p><strong>步驟：</strong>先用低價值玩具；把高價值食物放到鼻前，鬆口時說「放」、標記獎勵，再把安全玩具還牠。</p><p><strong>進階：</strong>從玩具到襪子等日常物，但危險物品仍以環境管理避免取得。</p><p><strong>避免：</strong>追逐、硬掰嘴和頻繁沒收會加重護物。</p></div><label><input class="task-check" type="checkbox" data-task="skill-drop">能用食物交換低價值物品</label></details>
+          <details><summary><span>06</span>鬆繩行走</summary><div class="lesson"><p><strong>步驟：</strong>牽繩鬆時前進或給食物；一拉緊就停下、轉向或增加距離。先練 5 步，再到 10 步。</p><p><strong>獎勵：</strong>不只用零食，也可用「去聞那棵樹」作為獎勵。</p><p><strong>避免：</strong>不要用扯、勒、急拉讓牠回位，這會讓散步更緊繃。</p></div><label><input class="task-check" type="checkbox" data-task="skill-leash">安靜路段 10 步不拉緊</label></details>
+          <details><summary><span>07</span>合作照護</summary><div class="lesson"><p><strong>步驟：</strong>手靠近肩膀就獎勵；摸一下就獎勵；再到耳朵、腳、嘴邊。每次在牠想離開前結束。</p><p><strong>停止訊號：</strong>轉頭、縮腳、舔鼻、僵硬、拒食或離開，都表示要降低難度。</p><p><strong>用途：</strong>洗澡、剪甲、刷牙、看診都從這裡建立合作感。</p></div><label><input class="task-check" type="checkbox" data-task="skill-care">接受 3 個部位各 1 秒觸碰</label></details>
+        </div>
+        <div class="signal-grid">
+          <article class="green"><h3>綠燈</h3><p>身體鬆軟、眼神柔和、能聞地面、能吃、會主動靠近又能離開。</p></article>
+          <article class="yellow"><h3>黃燈</h3><p>舔鼻、打哈欠、轉頭、尾巴降低、突然停止吃、過度喘氣。</p></article>
+          <article class="red"><h3>紅燈</h3><p>身體僵硬、盯視、露齒、低吼、撲咬、逃竄、失禁或完全拒食。</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="health">
+      <div class="wrap health-layout">
+        <article>
+          <p class="eyebrow dark">HEALTH TRACKING</p>
+          <h2>首次獸醫檢查與每日觀察</h2>
+          <div class="checklist flat">
+            <label><input class="task-check" type="checkbox" data-task="vet-chip"><span>全身掃描晶片，完成合法轉移與聯絡資料更新。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="vet-exam"><span>身體檢查：心肺、口腔、耳眼、皮膚、腹部、四肢、舊傷與疼痛。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="vet-bcs"><span>記錄體重、9 分制體態分數與肌肉狀態。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="vet-vaccine"><span>疫苗史不明時，制定核心疫苗、狂犬病與生活型態疫苗計畫。</span></label>
+            <label><input class="task-check" type="checkbox" data-task="vet-followup"><span>預約複診，並把疫苗、驅蟲、體重與用藥日期放進行事曆。</span></label>
+          </div>
+        </article>
+        <article class="card log-card">
+          <div class="card-row"><div><h3>每日觀察日誌</h3><p>尤其適合前 14 天，可下載成 CSV 給獸醫或訓練師。</p></div><button class="button secondary" id="downloadLogButton" type="button">下載 CSV</button></div>
+          <form id="logForm" class="log-form">
+            <label>日期<input id="logDate" type="date" required></label>
+            <label>食慾<select id="logAppetite"><option>正常</option><option>較少</option><option>拒食</option><option>異常增加</option></select></label>
+            <label>糞便<select id="logStool"><option>成形</option><option>偏軟</option><option>水瀉</option><option>帶血／黑便</option><option>未排便</option></select></label>
+            <label>情緒<select id="logMood"><option>放鬆</option><option>警戒</option><option>害怕</option><option>亢奮</option><option>精神差</option></select></label>
+            <label class="wide">備註<input id="logNotes" type="text" placeholder="飲水、嘔吐、咳嗽、尿量、觸發物、用藥等"></label>
+            <button class="button primary" type="submit">新增紀錄</button>
+          </form>
+          <div class="table-wrap">
+            <table><thead><tr><th>日期</th><th>食慾</th><th>糞便</th><th>情緒</th><th>備註</th><th></th></tr></thead><tbody id="logTableBody"><tr><td colspan="6">尚無紀錄</td></tr></tbody></table>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="shopping">
+      <div class="wrap">
+        <div class="section-heading">
+          <p class="eyebrow dark">SHOPPING & BUDGET</p>
+          <h2>只買真正需要、尺寸正確的用品</h2>
+          <p>金額會自動加總。胸背與項圈最好能試穿，不要只靠照片猜尺寸。</p>
+        </div>
+        <div class="shopping-controls">
+          <label>幣別／單位<input data-save="currency" id="currencyInput" type="text" placeholder="例如：NT$、HK$、¥"></label>
+          <div class="budget-display"><span>目前預估</span><strong><span id="currencyLabel">金額</span> <span id="budgetDisplay">0</span></strong></div>
+        </div>
+        <div class="shopping-list">
+          <article data-priority="接回前"><label><input class="task-check" type="checkbox" data-task="buy-harness"><strong>合身 Y 字胸背</strong><span>肩膀可活動、腋下不磨、後退不脫出。</span><input class="cost-input" data-cost="harness" type="number" min="0" step="1" placeholder="0"></label></article>
+          <article data-priority="接回前"><label><input class="task-check" type="checkbox" data-task="buy-collar"><strong>平面項圈＋安全連接扣</strong><span>與胸背形成第二道固定，不用來長期拴住。</span><input class="cost-input" data-cost="collar" type="number" min="0" step="1" placeholder="0"></label></article>
+          <article data-priority="接回前"><label><input class="task-check" type="checkbox" data-task="buy-leash"><strong>1.5-2 公尺固定牽繩</strong><span>扣具可靠；初期不使用伸縮牽繩。</span><input class="cost-input" data-cost="leash" type="number" min="0" step="1" placeholder="0"></label></article>
+          <article data-priority="接回前"><label><input class="task-check" type="checkbox" data-task="buy-id"><strong>聯絡牌</strong><span>至少寫兩組電話，晶片登記前尤其重要。</span><input class="cost-input" data-cost="id" type="number" min="0" step="1" placeholder="0"></label></article>
+          <article data-priority="接回前"><label><input class="task-check" type="checkbox" data-task="buy-gate"><strong>圍欄／嬰兒門</strong><span>建立玄關第二道防線與寵物分區。</span><input class="cost-input" data-cost="gate" type="number" min="0" step="1" placeholder="0"></label></article>
+          <article data-priority="第一週"><label><input class="task-check" type="checkbox" data-task="buy-cleaner"><strong>酵素清潔劑＋撿便袋</strong><span>降低殘留氣味，避免用刺激性氣味處罰。</span><input class="cost-input" data-cost="cleaner" type="number" min="0" step="1" placeholder="0"></label></article>
+          <article data-priority="第一週"><label><input class="task-check" type="checkbox" data-task="buy-enrichment"><strong>漏食／舔食／嗅聞用品</strong><span>先從簡單開始並全程觀察。</span><input class="cost-input" data-cost="enrichment" type="number" min="0" step="1" placeholder="0"></label></article>
+          <article data-priority="視需要"><label><input class="task-check" type="checkbox" data-task="buy-muzzle"><strong>合身籃式嘴套</strong><span>風險管理和看診工具，不是處罰。</span><input class="cost-input" data-cost="muzzle" type="number" min="0" step="1" placeholder="0"></label></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt" id="learning">
+      <div class="wrap quiz-layout">
+        <article>
+          <p class="eyebrow dark">5 分鐘自我檢查</p>
+          <h2>你們家的共同原則一致嗎？</h2>
+          <p>這不是考試，而是用來找出接回前需要先討論的地方。</p>
+        </article>
+        <form id="quizForm" class="quiz-card">
+          <fieldset><legend>1. 狗在室內排泄後，最合適的處理是？</legend><label><input type="radio" name="q1" value="a"> 立刻責罵</label><label><input type="radio" name="q1" value="b"> 安靜清理，檢討是否錯過帶出去時機</label><label><input type="radio" name="q1" value="c"> 關籠一小時</label></fieldset>
+          <fieldset><legend>2. 遇到陌生人突然不吃零食且身體僵硬，代表？</legend><label><input type="radio" name="q2" value="a"> 挑食</label><label><input type="radio" name="q2" value="b"> 必須更靠近</label><label><input type="radio" name="q2" value="c"> 壓力可能過高，應增加距離</label></fieldset>
+          <fieldset><legend>3. 獨處錄影出現持續喘氣、抓門與嚎叫，下一步是？</legend><label><input type="radio" name="q3" value="a"> 延長時間讓牠哭累</label><label><input type="radio" name="q3" value="b"> 降低難度並尋求獸醫／行為專業協助</label><label><input type="radio" name="q3" value="c"> 用遠端麥克風責罵</label></fieldset>
+          <fieldset><legend>4. 訓練新行為時，較好的安排是？</legend><label><input type="radio" name="q4" value="a"> 每次 30 分鐘直到成功</label><label><input type="radio" name="q4" value="b"> 短回合、高成功率、逐步增加一種難度</label><label><input type="radio" name="q4" value="c"> 同時增加距離、時間與干擾</label></fieldset>
+          <button class="button primary" type="submit">查看結果</button>
+          <div id="quizResult" class="quiz-result" hidden></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section emergency-section" id="emergency">
+      <div class="wrap emergency-layout">
+        <article class="emergency-card printable-card">
+          <p class="eyebrow">EMERGENCY CARD</p>
+          <h2>先填好，真正需要時就不用搜尋</h2>
+          <div class="form-grid emergency-form">
+            <label>狗狗名字<input data-save="emergencyDogName" type="text" placeholder="名字"></label>
+            <label>晶片號碼<input data-save="emergencyChip" type="text" placeholder="號碼"></label>
+            <label>主要獸醫電話<input data-save="vetPhone" type="tel" placeholder="電話"></label>
+            <label>24 小時急診電話<input data-save="emergencyPhone" type="tel" placeholder="電話"></label>
+            <label class="wide">急診地址<input data-save="emergencyAddress" type="text" placeholder="地址"></label>
+            <label class="wide">過敏、疾病、用藥<input data-save="medicalNotes" type="text" placeholder="沒有也請填「目前未知」"></label>
+          </div>
+          <button class="button light" type="button" id="printEmergencyButton">只列印緊急卡</button>
+        </article>
+        <article class="emergency-signs">
+          <h3>立即就醫警訊</h3>
+          <ul>
+            <li>呼吸困難、張口呼吸、牙齦變灰藍、窒息。</li>
+            <li>昏倒、無法站立、持續或反覆抽搐。</li>
+            <li>重大外傷、嚴重出血、被車撞或從高處墜落。</li>
+            <li>疑似中毒或吞入異物；不要自行催吐。</li>
+            <li>腹部快速膨大、乾嘔但吐不出來、明顯不安。</li>
+            <li>無法排尿、反覆用力卻沒有尿。</li>
+            <li>中暑症狀：極度喘氣、流口水、步態不穩、嘔吐或倒下。</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">
+      <strong>安心迎家計畫</strong>
+      <button class="text-button" id="resetButton" type="button">清除本機資料</button>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
